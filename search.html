@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поиск по стихам - Наталья Молодикова</title>
+  <link rel="icon" href="favicon.ico">
+<div id="styles">
+<link rel="stylesheet" type="text/css" href="/styles.css" />
+</div>
+<div id="fnd"><style> .zaprosi {display: none;} </style></div>
+ <style>
+            .card {
+                display: block;
+            }
+            .card2 {
+                display: block;
+            }
+
+            .card.hide {
+                display: none;
+            }
+input[type="text"] {
+  padding: 11px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+        </style>
+</head>
+<body>
+<div id="menu">
+<div class="zakrep">
+<nav>  
+   <ul class="topmenu">
+    <li> <h2> Наталья М.</h2></li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/stihi/">Мои стихи</a></li>
+  </ul>
+        <div class="menu">
+<br>
+    <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+    <label for="burger-checkbox" class="burger"></label>
+    <ul class="menu-list">
+<br><br>
+<center>
+            <li><h3>Наталья М.</h3></li>
+</center>
+            <li><a class="menu-item" href="/">Главная</a></li>
+            <li><a class="menu-item" href="/about.html">Обо мне</a></li>
+            <li><a class="menu-item" href="/stihi/">Мои стихи</a></li>
+       </ul>
+<br>
+</div>
+</div>
+</nav>
+</div>
+<center>
+<br>
+<h1>Наталья Молодикова - поиск по стихам!</h1>
+<h3>Начните вводить название стиха, который ищите!</h3>
+<hr>
+<br>
+  <input type="text" id="elastic" placeholder="Поиск по стихам" onkeydown="search()"/>
+  <script>
+function search() {
+    if(event.keyCode == 13) {
+        location.hash = '#';
+        location.hash = 'results';
+    }
+}
+  </script>
+<p>Результаты по вашему запросу ищутся автоматически. Никуда кликать не нужно.</p>
+<br><br><br>
+<br>
+<div id="fnd"><br></div>
+<div class="zaprosi" id="results">
+        <div class="card">
+<br>
+<br>
+<hr>
+<br>
+<h4>Стих</h4>
+<div class="card2"><h2><a href="/stihi/2.html">Предателей не возвращайте</a></h2></div>
+<br>
+<hr>
+<br>
+<br>
+        </div>
+        <div class="card">
+<br>
+<br>
+<hr>
+<br>
+<h4>Стих</h4>
+<div class="card2"><h2><a href="/stihi/1.html">Волк</a></h2></div>
+<br>
+<hr>
+<br>
+<br>
+        </div>
+</div>
+
+
+
+        <script type="text/javascript">
+            const elastic = document.querySelector('#elastic')
+
+            elastic.addEventListener('input', (ev) => {
+                const value = ev.target.value.trim()
+                const elasticItems = document.querySelectorAll('.card')
+                const searchRegExp = new RegExp(value, 'gi')
+
+                if (value === '') {
+                    elasticItems.forEach((el) => {
+                        el.classList.add('hide')
+                    })
+                    return
+                }
+
+                elasticItems.forEach((el) => {
+                    const innerCard = el.querySelector('.card2')
+                    const elementText = innerCard.textContent
+                    const isContainsSearchRequest = searchRegExp.test(elementText)
+                    if (!isContainsSearchRequest) {
+                        el.classList.add('hide')
+var fnd = document.getElementById("fnd");
+fnd.innerHTML = "<style> .zaprosi {display: block;} </style>";
+                    } else {
+                        el.classList.remove('hide')
+var fnd = document.getElementById("fnd");
+fnd.innerHTML = "<style> .zaprosi {display: block;} </style>";
+                    }
+                })
+            })
+        </script>
+<br><br><br><br>
+</center>
+<div class="copyright" id="copyright">
+<center> <br><br> <h2>Наталья Молодикова</h2> <h5>© Наталья Молодикова</h5> <br> 
+<p>! JavaScript отключён. Некоторые элементы сайта могут отображаться неправильно.</p>
+</center>
+<script src="/elements.js"></script>
+</body>
+</html>
